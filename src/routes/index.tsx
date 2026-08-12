@@ -27,7 +27,7 @@ export const Route = createFileRoute("/")({
       {
         property: "og:description",
         content:
-          "Count every Elo point and puzzle you solve, then watch your 7-day growth and daily comparison bars move.",
+          "Track Elo gained and puzzles solved per day with one-tap plus and minus counters, growth bars and daily comparison.",
       },
     ],
   }),

@@ -77,13 +77,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Elo Tracker" },
-      { name: "description", content: "Track Elo gained and puzzles solved each day." },
-      { property: "og:title", content: "Elo Tracker" },
-      { property: "og:description", content: "Track Elo gained and puzzles solved each day." },
+      { title: "Elo Tracker — Chess Rating & Puzzle Streak Log" },
+      { name: "description", content: "Track Elo gained and puzzles solved per day with one-tap plus and minus counters, growth bars and daily comparison." },
+      { property: "og:title", content: "Elo Tracker — Chess Rating & Puzzle Streak Log" },
+      { property: "og:description", content: "Track Elo gained and puzzles solved per day with one-tap plus and minus counters, growth bars and daily comparison." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Elo Tracker — Chess Rating & Puzzle Streak Log" },
+      { name: "twitter:description", content: "Track Elo gained and puzzles solved per day with one-tap plus and minus counters, growth bars and daily comparison." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/6a4014df-8c58-445e-a911-fd016686eee3" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/6a4014df-8c58-445e-a911-fd016686eee3" },
     ],
     links: [
       {
