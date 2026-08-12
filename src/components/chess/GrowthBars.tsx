@@ -22,7 +22,7 @@ export function GrowthBars({ title, days, accent, unit }: Props) {
           const height = (Math.abs(d.value) / max) * 100;
           const negative = d.value < 0;
           return (
-            <div key={d.key} className="flex flex-1 flex-col items-center justify-end gap-2">
+            <div key={d.key} className="flex h-full flex-1 flex-col items-center justify-end gap-2">
               <span className="text-xs tabular-nums text-muted-foreground">
                 {d.value > 0 ? `+${d.value}` : d.value}
               </span>
