@@ -26,15 +26,17 @@ export function GrowthBars({ title, days, accent, unit }: Props) {
               <span className="text-xs tabular-nums text-muted-foreground">
                 {d.value > 0 ? `+${d.value}` : d.value}
               </span>
-              <div
-                className={`w-full rounded-t-xl transition-[height] duration-700 ease-out ${
-                  negative ? "bg-destructive" : barBg
-                } ${d.value === 0 ? "opacity-25" : "opacity-90"}`}
-                style={{
-                  height: `${Math.max(height, 4)}%`,
-                  transitionDelay: `${i * 45}ms`,
-                }}
-              />
+              <div className="flex min-h-0 w-full flex-1 items-end">
+                <div
+                  className={`w-full rounded-t-xl transition-[height] duration-700 ease-out ${
+                    negative ? "bg-destructive" : barBg
+                  } ${d.value === 0 ? "opacity-25" : "opacity-90"}`}
+                  style={{
+                    height: `${Math.max(height, 4)}%`,
+                    transitionDelay: `${i * 45}ms`,
+                  }}
+                />
+              </div>
               <span className="text-[11px] uppercase tracking-wider text-muted-foreground">
                 {dayLabel(d.key)}
               </span>
