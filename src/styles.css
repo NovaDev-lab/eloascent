@@ -4,6 +4,15 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme inline {
+  --color-gold: var(--gold);
+  --color-gold-foreground: var(--gold-foreground);
+  --color-emerald: var(--emerald);
+  --color-crimson: var(--crimson);
+  --font-display: "Cinzel", ui-serif, Georgia, serif;
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+}
+
 /*
  * Design system definition.
  *
