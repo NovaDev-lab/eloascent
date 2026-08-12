@@ -4,6 +4,15 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme inline {
+  --color-gold: var(--gold);
+  --color-gold-foreground: var(--gold-foreground);
+  --color-emerald: var(--emerald);
+  --color-crimson: var(--crimson);
+  --font-display: "Cinzel", ui-serif, Georgia, serif;
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+}
+
 /*
  * Design system definition.
  *
@@ -63,32 +72,39 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
+  --background: oklch(0.16 0.028 264);
+  --foreground: oklch(0.96 0.012 90);
+  --card: oklch(0.215 0.03 265 / 72%);
+  --card-foreground: oklch(0.96 0.012 90);
+  --popover: oklch(0.215 0.03 265);
+  --popover-foreground: oklch(0.96 0.012 90);
+  --primary: oklch(0.8 0.14 85);
+  --primary-foreground: oklch(0.18 0.03 265);
+  --secondary: oklch(0.28 0.035 265);
+  --secondary-foreground: oklch(0.96 0.012 90);
+  --muted: oklch(0.26 0.03 265);
+  --muted-foreground: oklch(0.72 0.025 265);
+  --accent: oklch(0.62 0.13 165);
+  --accent-foreground: oklch(0.15 0.03 265);
+  --gold: oklch(0.82 0.145 85);
+  --gold-foreground: oklch(0.18 0.03 265);
+  --emerald: oklch(0.66 0.14 163);
+  --crimson: oklch(0.62 0.2 20);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
+  --border: oklch(0.82 0.145 85 / 20%);
+  --input: oklch(0.82 0.145 85 / 25%);
+  --ring: oklch(0.82 0.145 85 / 60%);
+  --gradient-gold: linear-gradient(135deg, oklch(0.88 0.13 92), oklch(0.72 0.15 70));
+  --gradient-emerald: linear-gradient(135deg, oklch(0.74 0.14 165), oklch(0.55 0.13 190));
+  --shadow-glow: 0 20px 60px -20px oklch(0.82 0.145 85 / 35%);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
+  --sidebar: oklch(0.2 0.03 265);
+  --sidebar-foreground: oklch(0.96 0.012 90);
   --sidebar-primary: oklch(0.208 0.042 265.755);
   --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
   --sidebar-accent: oklch(0.968 0.007 247.896);
@@ -140,5 +156,127 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
   }
+}
+
+/* ---- Lively fluid chess background ---- */
+@keyframes drift-a {
+  0% {
+    transform: translate3d(-8%, -6%, 0) scale(1.1);
+  }
+  50% {
+    transform: translate3d(10%, 8%, 0) scale(1.35);
+  }
+  100% {
+    transform: translate3d(-8%, -6%, 0) scale(1.1);
+  }
+}
+@keyframes drift-b {
+  0% {
+    transform: translate3d(6%, 10%, 0) scale(1.25);
+  }
+  50% {
+    transform: translate3d(-12%, -8%, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(6%, 10%, 0) scale(1.25);
+  }
+}
+@keyframes board-pan {
+  0% {
+    background-position:
+      0 0,
+      40px 40px;
+  }
+  100% {
+    background-position:
+      160px 80px,
+      200px 120px;
+  }
+}
+@keyframes float-piece {
+  0% {
+    transform: translateY(12px) rotate(-6deg);
+  }
+  50% {
+    transform: translateY(-18px) rotate(6deg);
+  }
+  100% {
+    transform: translateY(12px) rotate(-6deg);
+  }
+}
+@keyframes pop-in {
+  0% {
+    transform: scale(0.6) translateY(6px);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+@utility bg-fluid-a {
+  background: radial-gradient(
+    circle at 30% 30%,
+    oklch(0.82 0.145 85 / 45%),
+    transparent 62%
+  );
+  animation: drift-a 18s ease-in-out infinite;
+  filter: blur(70px);
+}
+@utility bg-fluid-b {
+  background: radial-gradient(circle at 60% 60%, oklch(0.6 0.15 175 / 42%), transparent 62%);
+  animation: drift-b 24s ease-in-out infinite;
+  filter: blur(80px);
+}
+@utility bg-fluid-c {
+  background: radial-gradient(circle at 50% 50%, oklch(0.5 0.2 300 / 32%), transparent 60%);
+  animation: drift-a 30s ease-in-out infinite reverse;
+  filter: blur(90px);
+}
+@utility bg-chessboard {
+  background-image:
+    linear-gradient(
+      45deg,
+      oklch(1 0 0 / 4%) 25%,
+      transparent 25%,
+      transparent 75%,
+      oklch(1 0 0 / 4%) 75%
+    ),
+    linear-gradient(
+      45deg,
+      oklch(1 0 0 / 4%) 25%,
+      transparent 25%,
+      transparent 75%,
+      oklch(1 0 0 / 4%) 75%
+    );
+  background-size: 80px 80px;
+  background-position:
+    0 0,
+    40px 40px;
+  animation: board-pan 40s linear infinite alternate;
+}
+@utility animate-float-piece {
+  animation: float-piece 9s ease-in-out infinite;
+}
+@utility animate-pop-in {
+  animation: pop-in 0.28s ease-out;
+}
+@utility glass-panel {
+  background: linear-gradient(
+    160deg,
+    oklch(0.28 0.035 265 / 70%),
+    oklch(0.18 0.03 265 / 78%)
+  );
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-glow);
+}
+@utility text-gradient-gold {
+  background: var(--gradient-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
